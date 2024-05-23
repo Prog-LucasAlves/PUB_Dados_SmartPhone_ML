@@ -1,4 +1,4 @@
-# Scrapy settings for coleta project
+# Scrapy settings for dados project
 #
 # For simplicity, this file contains only settings considered important or
 # commonly used. You can find more settings consulting the documentation:
@@ -7,14 +7,14 @@
 #     https://docs.scrapy.org/en/latest/topics/downloader-middleware.html
 #     https://docs.scrapy.org/en/latest/topics/spider-middleware.html
 
-BOT_NAME = "coleta"
+BOT_NAME = "dados"
 
-SPIDER_MODULES = ["coleta.spiders"]
-NEWSPIDER_MODULE = "coleta.spiders"
+SPIDER_MODULES = ["dados.spiders"]
+NEWSPIDER_MODULE = "dados.spiders"
 
-
+USER_AGENT = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36'
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
-#USER_AGENT = "coleta (+http://www.yourdomain.com)"
+#USER_AGENT = "dados (+http://www.yourdomain.com)"
 
 # Obey robots.txt rules
 ROBOTSTXT_OBEY = True
@@ -45,13 +45,13 @@ ROBOTSTXT_OBEY = True
 # Enable or disable spider middlewares
 # See https://docs.scrapy.org/en/latest/topics/spider-middleware.html
 #SPIDER_MIDDLEWARES = {
-#    "coleta.middlewares.ColetaSpiderMiddleware": 543,
+#    "dados.middlewares.DadosSpiderMiddleware": 543,
 #}
 
 # Enable or disable downloader middlewares
 # See https://docs.scrapy.org/en/latest/topics/downloader-middleware.html
 #DOWNLOADER_MIDDLEWARES = {
-#    "coleta.middlewares.ColetaDownloaderMiddleware": 543,
+#    "dados.middlewares.DadosDownloaderMiddleware": 543,
 #}
 
 # Enable or disable extensions
@@ -63,7 +63,7 @@ ROBOTSTXT_OBEY = True
 # Configure item pipelines
 # See https://docs.scrapy.org/en/latest/topics/item-pipeline.html
 #ITEM_PIPELINES = {
-#    "coleta.pipelines.ColetaPipeline": 300,
+#    "dados.pipelines.DadosPipeline": 300,
 #}
 
 # Enable and configure the AutoThrottle extension (disabled by default)
