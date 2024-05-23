@@ -41,6 +41,14 @@ poetry install
 
 ## Utilizando o Scrapy
 
+- Iniciando o Projeto
+
 ```bash
 scrapy startproject <nomedoprojeto>
+```
+
+- Criando spiders do projeto
+
+```bash
+scrapy genspider <nomedoarquivo> <url do site>
 ```
