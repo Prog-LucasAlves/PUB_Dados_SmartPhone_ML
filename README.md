@@ -52,3 +52,11 @@ scrapy startproject <nomedoprojeto>
 ```bash
 scrapy genspider <nomedoarquivo> <url do site>
 ```
+
+- Após esse comamdo será criada uma pasta de nome 'spiders' aonde vai conter um arquivo '<nomedoarquivo>.py'
+
+- Para rodar o web scraping
+
+```bash
+task run
+```
