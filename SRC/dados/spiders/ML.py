@@ -14,11 +14,15 @@ class MlSpider(scrapy.Spider):
         for product in products:
 
             preco_reais = product.css('span.andes-money-amount__fraction::text').getall()
+            preco_cents = product.css('andes-money-amount__cents andes-money-amount__cents--superscript-24::text').getall()
 
             yield {
                 'loja': product.css('p.ui-search-official-store-label.ui-search-item__group__element.ui-search-color--GRAY::text').get(),
                 'descricao': product.css('h2.ui-search-item__title::text').get(),
                 'old_preco_reais': preco_reais[0] if len(preco_reais) > 0 else None,
+                'new_price_reais': preco_reais[1] if len(preco_reais) > 1 else None,
+                'reviews_rating_number': product.css('span.ui-search-reviews__rating-number::text').get(),
+                'reviews_amount': product.css('span.ui-search-reviews__amount::text').get()
             }
 
         if self.PAGE_COUNT < self.MAX_PAGES:
