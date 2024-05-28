@@ -4,7 +4,7 @@ import pandas as pd
 import sqlite3
 
 # Conexão com o banco de dados
-conn = sqlite3.connect('../../data/data.db')
+conn = sqlite3.connect('../data/data.db')
 
 # Consulta ao banco de dados para obter os dados tabela 'ML'
 df = pd.read_sql_query("SELECT * FROM ML", conn)
