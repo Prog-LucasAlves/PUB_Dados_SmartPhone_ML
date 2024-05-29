@@ -12,18 +12,13 @@ df = pd.read_sql_query("SELECT * FROM ML", conn)
 # Fechar a conexão com o banco de dados
 conn.close()
 
-# Configuração CSS
-tabs_font_css = """
-<style>
-    div[class*=stTitle] label{
-        font-size: 26px;
-        color: blue
-}
-</style>
-
-
-"""
-st.markdown(tabs_font_css, unsafe_allow_html=True)
-
 # Título da aplicação
-st.title("Pesquisa de Mercado - :blue[_Smartphones no Mercado Livre_]")
+st.title("Pesquisa de Mercado - :blue[_Smartphones no Mercado Livre._]")
+
+# Layout com colunas para KPIs
+st.subheader("KPIs Principais do Sistema")
+col1, col2, col3 = st.columns(3)
+
+# KPI 1 - Quantidade de smartphones no mercado
+total_itens = df.shape[0]
+col1.metric(label="Total de Smartphones", value=total_itens)
