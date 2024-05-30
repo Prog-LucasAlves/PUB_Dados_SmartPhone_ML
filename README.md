@@ -60,3 +60,9 @@ scrapy genspider <nomedoarquivo> <url do site>
 ```bash
 task run
 ```
+
+- Link Site com os KPIs
+
+```bash
+https://pub-dados-smartphone-ml.onrender.com/
+```
