@@ -26,3 +26,7 @@ col1.metric(label="Número Total de Smartphones", value=total_itens)
 # KPI 2: Número de lojas únicas
 unique_lojas = df['loja'].nunique()
 col2.metric(label="Número de Lojas Únicas", value=unique_lojas)
+
+# KPI 3: Preço médio novo (em reais)
+average_new_price = df['new_price'].mean()
+col3.metric(label="Preço Médio Novo (R$)", value=f"{average_new_price:.2f}")
