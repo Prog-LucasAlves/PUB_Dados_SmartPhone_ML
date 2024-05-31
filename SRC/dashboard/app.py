@@ -19,6 +19,10 @@ st.title("Pesquisa de Mercado - :blue[_Smartphones no Mercado Livre._]")
 st.subheader("KPIs Principais do Sistema")
 col1, col2, col3 = st.columns(3)
 
-# KPI 1 - Quantidade de smartphones no mercado
+# KPI 1 - Quantidade de smartphones
 total_itens = df.shape[0]
-col1.metric(label="Total de Smartphones", value=total_itens)
+col1.metric(label="Número Total de Smartphones", value=total_itens)
+
+# KPI 2: Número de lojas únicas
+unique_lojas = df['loja'].nunique()
+col2.metric(label="Número de Lojas Únicas", value=unique_lojas)
