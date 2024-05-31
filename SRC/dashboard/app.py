@@ -50,7 +50,7 @@ average_price_by_lojas = (df_non_zero_prices.groupby('loja')['new_price']
                           .sort_values(ascending=False)
                           .reset_index()
                           .rename(columns={'loja': 'Loja', 'new_price': 'Preço Médio'}))
-col1.bar_chart(average_price_by_lojas, x='Loja', y=f"{'Preço Médio':.2f}")
+col1.bar_chart(average_price_by_lojas, x='Loja', y='Preço Médio')
 col2.write(average_price_by_lojas)
 
 # Qual a satisfação por Loja
