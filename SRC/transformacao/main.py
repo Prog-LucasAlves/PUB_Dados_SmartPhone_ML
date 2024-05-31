@@ -2,9 +2,6 @@
 import pandas as pd
 import sqlite3
 from datetime import datetime
-import locale
-
-locale.setlocale(locale.LC_ALL, 'pt_BR.UTF-8')
 
 # Caminho do arquivo JSON
 df = pd.read_json('../../data/data.jsonl', lines=True)
