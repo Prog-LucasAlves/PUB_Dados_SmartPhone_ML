@@ -2,6 +2,9 @@
 import pandas as pd
 import sqlite3
 from datetime import datetime
+import locale
+
+locale.setlocale(locale.LC_ALL, 'pt_BR.UTF-8')
 
 # Caminho do arquivo JSON
 df = pd.read_json('../../data/data.jsonl', lines=True)
@@ -49,14 +52,28 @@ df['loja'] = df['loja'].str.lstrip('por ')
 df['A'] = df['new_price'].astype(str)
 df['A'] = df['A'].str.rstrip('.0')
 df['A'] = df['A'].str.replace('.', '')
-df['B'] = df['A'].astype(float)
+df['B'] = df['A'].astype(int)
+
+
+def formatar(valor):
+    return "{:,.2f}".format(valor)
+
+
+df['C'] = df['B'].apply(formatar)
+df['D'] = df['C'].str.replace(',', '_')
+df['E'] = df['D'].str.replace('.', ',')
+df['F'] = df['E'].str.replace('_', '')
+df['G'] = df['F'].str.replace(',', '.')
+df['H'] = df['G'].astype(float)
+
+# valor = locale.currency(df['B'], grouping=True, symbol=None)
 
 # Remover as colunas que não serão utilizadas
 df.drop(columns=['old_preco_reais', 'new_price_reais',
-                 'x10', 'x20', 'A', 'new_price'], axis=1, inplace=True)
+                 'x10', 'x20', 'A', 'B', 'C', 'D', 'E', 'F', 'H', 'new_price'], axis=1, inplace=True)
 
 # Renomear as colunas
-df.rename(columns={'B': 'new_price'}, inplace=True)
+df.rename(columns={'G': 'new_price'}, inplace=True)
 
 # Conectar ao banco de dados SQLite
 conn = sqlite3.connect('../../data/data.db')
@@ -69,3 +86,4 @@ conn.close()
 df.to_csv('../../data/data.csv', index=False)
 
 print(df.head())
+print(df.dtypes)
