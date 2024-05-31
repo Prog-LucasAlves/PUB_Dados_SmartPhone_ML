@@ -72,5 +72,3 @@ conn.close()
 df.to_csv('../../data/data.csv', index=False)
 
 print(df.head())
-print(df.dtypes)
-
