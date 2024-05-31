@@ -38,7 +38,7 @@ top_10_pages_lojas = (df['loja'].value_counts()
                                 .sort_values(ascending=False)
                                 .reset_index()
                                 .rename(columns={'loja': 'Loja', 'count': 'Qtd'}))
-col1.bar_chart(top_10_pages_lojas)
+col1.bar_chart(top_10_pages_lojas, x='Loja', y='Qtd')
 col2.write(top_10_pages_lojas)
 
 # Qual o preço médio por loja
