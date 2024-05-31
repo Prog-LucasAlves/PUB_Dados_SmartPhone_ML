@@ -6,6 +6,8 @@ from datetime import datetime
 # Caminho do arquivo JSON
 df = pd.read_json('../../data/data.jsonl', lines=True)
 
+print(df.head(5))
+
 # Mostrar todas as colunas
 pd.options.display.max_columns = None
 
@@ -41,6 +43,9 @@ df['x20'] = df['new_price']
 df['x20'] = df['x20'].astype(int)
 
 df = df[df['x10'] != df['x20']]
+
+# Remover a parte 'por ' do campo 'loja'
+df['loja'] = df['loja'].str.lstrip('por ')
 
 # Remover as colunas que não serão utilizadas
 df.drop(columns=['old_preco_reais', 'new_price_reais', 'x10', 'x20'], axis=1, inplace=True)
