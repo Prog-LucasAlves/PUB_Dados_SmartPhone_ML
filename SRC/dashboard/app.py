@@ -34,14 +34,17 @@ col3.metric(label="Preço Médio Novo (R$)", value=f"{average_new_price:.2f}")
 # Quais as lojas são mais encontradas até a 10ª página
 st.subheader('Lojas Mais Encontradas até a 10ª Página')
 col1, col2 = st.columns([4, 2])
-top_10_pages_brands = df['loja'].value_counts().sort_values(ascending=False)
-col1.bar_chart(top_10_pages_brands)
-col2.write(top_10_pages_brands)
+top_10_pages_lojas = (df['loja'].value_counts()
+                                .sort_values(ascending=False)
+                                .reset_index()
+                                .rename(columns={'loja': 'Loja', 'count': 'Qtd'}))
+col1.bar_chart(top_10_pages_lojas)
+col2.write(top_10_pages_lojas)
 
 # Qual o preço médio por loja
 st.subheader('Preço Médio por Loja')
 col1, col2 = st.columns([4, 2])
 df_non_zero_prices = df[df['new_price'] > 0]
-average_price_by_brand = df_non_zero_prices.groupby('loja')['new_price'].mean().sort_values(ascending=False)
-col1.bar_chart(average_price_by_brand)
-col2.write(average_price_by_brand)
+average_price_by_lojas = df_non_zero_prices.groupby('loja')['new_price'].mean().sort_values(ascending=False)
+col1.bar_chart(average_price_by_lojas)
+col2.write(average_price_by_lojas)
