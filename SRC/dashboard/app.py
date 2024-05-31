@@ -33,7 +33,7 @@ col3.metric(label="Preço Médio Novo (R$)", value=f"{average_new_price:.2f}")
 
 # Quais as lojas são mais encontradas até a 10ª página
 st.subheader('Lojas Mais Encontradas até a 10ª Página')
-col1, col2 = st.columns([4, 4])
+col1, col2 = st.columns([6, 4])
 top_10_pages_lojas = (df['loja'].value_counts()
                       .sort_values(ascending=False)
                       .reset_index()
@@ -43,7 +43,7 @@ col2.write(top_10_pages_lojas)
 
 # Qual o preço médio por loja
 st.subheader('Preço Médio por Loja')
-col1, col2 = st.columns([4, 2])
+col1, col2 = st.columns([6, 4])
 df_non_zero_prices = df[df['new_price'] > 0]
 average_price_by_lojas = (df_non_zero_prices.groupby('loja')['new_price']
                           .mean()
