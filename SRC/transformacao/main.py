@@ -31,8 +31,19 @@ df['new_price'] = df['new_price_reais']
 # Remover as linhas com valores nulos
 df.dropna(inplace=True)
 
+# Filtro para os smartphones que tenham preços anteriores maiores
+df = df[df['old_price'] > df['new_price']]
+
+# Filtro para os smartphones que tenham preços sucessores menores
+df['x10'] = df['old_price'] / 10
+df['x10'] = df['x10'].astype(int)
+df['x20'] = df['new_price']
+df['x20'] = df['x20'].astype(int)
+
+df = df[df['x10'] != df['x20']]
+
 # Remover as colunas que não serão utilizadas
-df.drop(columns=['old_preco_reais', 'new_price_reais'], axis=1, inplace=True)
+df.drop(columns=['old_preco_reais', 'new_price_reais', 'x10', 'x20'], axis=1, inplace=True)
 
 # Conectar ao banco de dados SQLite
 conn = sqlite3.connect('../../data/data.db')
