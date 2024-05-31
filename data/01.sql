@@ -1,1 +1,1 @@
-SELECT AVG(new_price) FROM ML
+SELECT avg(new_price) FROM ML
