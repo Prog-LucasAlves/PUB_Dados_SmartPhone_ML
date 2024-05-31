@@ -49,6 +49,19 @@ average_price_by_lojas = (df_non_zero_prices.groupby('loja')['new_price']
                           .mean()
                           .sort_values(ascending=False)
                           .reset_index()
-                          .rename(columns={'new_price': 'Preço Médio', 'loja': 'Loja'}))
-col1.bar_chart(average_price_by_lojas, x='Loja', y='Preço Médio')
+                          .rename(columns={'loja': 'Loja', 'new_price': 'Preço Médio'}))
+col1.bar_chart(average_price_by_lojas, x='Loja', y=f"{'Preço Médio':.2f}")
 col2.write(average_price_by_lojas)
+
+# Qual a satisfação por Loja
+st.subheader('Satisfação por marca')
+col1, col2 = st.columns([6, 4])
+df_non_zero_reviews = df[df['reviews_rating_number'] > 0]
+satisfaction_by_brand = (df_non_zero_reviews.groupby('brand')['reviews_rating_number']
+                         .mean()
+                         .round(2)
+                         .sort_values(ascending=False)
+                         .reset_index()
+                         .rename(columns={'loja': 'Loja', 'reviews_rating_number': 'Satisfação'}))
+col1.bar_chart(satisfaction_by_brand, x='Loja', y='Satisfação')
+col2.write(satisfaction_by_brand)
