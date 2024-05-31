@@ -1,1 +1,1 @@
-SELECT * FROM ML
+SELECT AVG(new_price) FROM ML
