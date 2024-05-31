@@ -30,3 +30,10 @@ col2.metric(label="Número de Lojas Únicas", value=unique_lojas)
 # KPI 3: Preço médio novo (em reais)
 average_new_price = df['new_price'].mean()
 col3.metric(label="Preço Médio Novo (R$)", value=f"{average_new_price:.2f}")
+
+# Quais as lojas são mais encontradas até a 10ª página
+st.subheader('Lojas mais encontradas até a 10ª página')
+col1, col2 = st.columns([4, 2])
+top_10_pages_brands = df['loja'].value_counts().sort_values(ascending=False)
+col1.bar_chart(top_10_pages_brands)
+col2.write(top_10_pages_brands)
