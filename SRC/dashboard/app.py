@@ -57,7 +57,7 @@ col2.write(average_price_by_lojas)
 st.subheader('Satisfação por marca')
 col1, col2 = st.columns([6, 4])
 df_non_zero_reviews = df[df['reviews_rating_number'] > 0]
-satisfaction_by_brand = (df_non_zero_reviews.groupby('brand')['reviews_rating_number']
+satisfaction_by_brand = (df_non_zero_reviews.groupby('loja')['reviews_rating_number']
                          .mean()
                          .round(2)
                          .sort_values(ascending=False)
