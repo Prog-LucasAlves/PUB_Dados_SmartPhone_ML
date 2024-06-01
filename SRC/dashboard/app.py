@@ -13,7 +13,7 @@ df = pd.read_sql_query("SELECT * FROM ML", conn)
 conn.close()
 
 # Título da aplicação
-st.title("Pesquisa de Mercado - :blue[_Smartphones no Mercado Livre._]")
+st.title("Pesquisa de Mercado - :blue[_Smartphones no Mercado Livre._📱]")
 
 # Layout com colunas para KPIs
 st.subheader("KPIs Principais do Sistema")
