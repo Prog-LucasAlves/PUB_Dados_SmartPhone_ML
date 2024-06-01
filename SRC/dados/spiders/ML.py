@@ -6,7 +6,7 @@ class MlSpider(scrapy.Spider):
     allowed_domains = ["lista.mercadolivre.com.br"]
     start_urls = ["https://lista.mercadolivre.com.br/smatphonnes#D[A:smatphonnes]"]
     PAGE_COUNT = 1
-    MAX_PAGES = 2
+    MAX_PAGES = 80
 
     def parse(self, response):
         products = response.css("div.ui-search-result__content-wrapper")
@@ -14,7 +14,6 @@ class MlSpider(scrapy.Spider):
         for product in products:
 
             preco_reais = product.css('span.andes-money-amount__fraction::text').getall()
-            preco_cents = product.css('andes-money-amount__cents andes-money-amount__cents--superscript-24::text').getall()
 
             yield {
                 'loja': product.css('p.ui-search-official-store-label.ui-search-item__group__element.ui-search-color--GRAY::text').get(),
