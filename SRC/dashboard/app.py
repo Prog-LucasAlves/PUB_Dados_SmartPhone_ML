@@ -3,6 +3,14 @@ import streamlit as st
 import pandas as pd
 import sqlite3
 
+# Variáveis globais
+CURRENT_THEME = "light"
+IS_DARK_THEME = False
+
+# Configurações da aplicação
+st.set_option("deprecation.showPyplotGlobalUse", False)
+st.set_page_config(layout="wide")
+
 # Conexão com o banco de dados
 conn = sqlite3.connect('./data/data.db')
 
