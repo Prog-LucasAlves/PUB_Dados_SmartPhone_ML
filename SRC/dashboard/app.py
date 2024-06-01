@@ -46,7 +46,7 @@ top_10_pages_lojas = (df['loja'].value_counts()
                       .sort_values(ascending=False)
                       .reset_index()
                       .rename(columns={'loja': 'Loja', 'count': 'Qtd'}))
-col1.bar_chart(top_10_pages_lojas, x='Loja', y='Qtd')
+col1.bar_chart(top_10_pages_lojas, x='Loja', y='Qtd', use_container_width=True)
 col2.write(top_10_pages_lojas)
 
 # Qual o preço médio por loja
@@ -72,5 +72,5 @@ satisfaction_by_brand = (df_non_zero_reviews.groupby('loja')['reviews_rating_num
                          .sort_values(ascending=False)
                          .reset_index()
                          .rename(columns={'loja': 'Loja', 'reviews_rating_number': 'Satisfação'}))
-col1.bar_chart(satisfaction_by_brand, x='Loja', y='Satisfação')
+col1.bar_chart(satisfaction_by_brand, x='Loja', y='Satisfação', sorted=True)
 col2.write(satisfaction_by_brand)
