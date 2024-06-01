@@ -6,7 +6,7 @@ class MlSpider(scrapy.Spider):
     allowed_domains = ["lista.mercadolivre.com.br"]
     start_urls = ["https://lista.mercadolivre.com.br/smatphonnes#D[A:smatphonnes]"]
     PAGE_COUNT = 1
-    MAX_PAGES = 80
+    MAX_PAGES = 100
 
     def parse(self, response):
         products = response.css("div.ui-search-result__content-wrapper")
