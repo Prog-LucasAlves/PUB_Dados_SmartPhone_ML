@@ -13,7 +13,7 @@ df = pd.read_sql_query("SELECT * FROM ML", conn)
 conn.close()
 
 # Título da aplicação
-st.title("Pesquisa de Mercado - :blue[_Smartphones no Mercado Livre._📱]")
+st.title("Pesquisa de Mercado - :blue[Smartphones no Mercado Livre.📱]")
 
 # Layout com colunas para KPIs
 st.subheader("KPIs Principais do Sistema")
@@ -47,6 +47,7 @@ col1, col2 = st.columns([6, 4])
 df_non_zero_prices = df[df['new_price'] > 0]
 average_price_by_lojas = (df_non_zero_prices.groupby('loja')['new_price']
                           .mean()
+                          .round(2)
                           .sort_values(ascending=False)
                           .reset_index()
                           .rename(columns={'loja': 'Loja', 'new_price': 'Preço Médio'}))
