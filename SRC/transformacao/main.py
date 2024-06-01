@@ -70,6 +70,3 @@ df.to_sql('ML', conn, if_exists='replace', index=False)
 # Fechar a conexão com o banco de dados
 conn.close()
 df.to_csv('../../data/data.csv', index=False)
-
-print(df.head())
-print(df.dtypes)
