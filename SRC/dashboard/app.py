@@ -32,7 +32,7 @@ average_new_price = df['new_price'].mean()
 col3.metric(label="Preço Médio Novo (R$)", value=f"{average_new_price:.2f}")
 
 # Quais as lojas são mais encontradas até a 10ª página
-st.subheader('Lojas Mais Encontradas até a 10ª Página')
+st.subheader('Lojas Mais Encontradas até a 20ª Página')
 col1, col2 = st.columns([6, 4])
 top_10_pages_lojas = (df['loja'].value_counts()
                       .sort_values(ascending=False)
@@ -54,7 +54,7 @@ col1.bar_chart(average_price_by_lojas, x='Loja', y='Preço Médio')
 col2.write(average_price_by_lojas)
 
 # Qual a satisfação por Loja
-st.subheader('Satisfação por marca')
+st.subheader('Satisfação por Loja')
 col1, col2 = st.columns([6, 4])
 df_non_zero_reviews = df[df['reviews_rating_number'] > 0]
 satisfaction_by_brand = (df_non_zero_reviews.groupby('loja')['reviews_rating_number']
