@@ -72,5 +72,5 @@ satisfaction_by_brand = (df_non_zero_reviews.groupby('loja')['reviews_rating_num
                          .sort_values(ascending=False)
                          .reset_index()
                          .rename(columns={'loja': 'Loja', 'reviews_rating_number': 'Satisfação'}))
-col1.bar_chart(satisfaction_by_brand, x='Loja', y='Satisfação', sorted=True)
+col1.bar_chart(satisfaction_by_brand, x='Loja', y='Satisfação')
 col2.write(satisfaction_by_brand)
